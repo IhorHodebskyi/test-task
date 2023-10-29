@@ -40,7 +40,6 @@ export const App = () => {
           />
           <Route path=":id" element={<DummyTable />} />
         </Route>
-        <Route path="*" element={<div>Error page</div>} />
       </Routes>
     </div>
   );
