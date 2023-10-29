@@ -38,7 +38,7 @@ export const App = () => {
             index
             element={<Home data={dataSorted} location={location} />}
           />
-          <Route path="/:id" element={<DummyTable />} />
+          <Route path=":id" element={<DummyTable />} />
         </Route>
         <Route path="*" element={<div>Error page</div>} />
       </Routes>
