@@ -1,29 +1,24 @@
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import tabsData from './db/tabs.json';
-import { lazy, useEffect, useMemo, useState } from 'react';
+import { lazy, useEffect, useMemo } from 'react';
 const Home = lazy(() => import('./Home'));
 const Layout = lazy(() => import('./Layout'));
 const DummyTable = lazy(() => import('./dummyTable'));
 export const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    setData(tabsData);
-  }, []);
 
   const dataSorted = useMemo(() => {
-    return data?.toSorted((a, b) => a.order - b.order);
-  }, [data]);
+    return tabsData.toSorted((a, b) => a.order - b.order);
+  }, []);
 
   const pathNavigate = dataSorted?.[0].id;
-  console.log(dataSorted);
+  console.log(location);
   useEffect(() => {
-    if (location.key === 'default') {
+    if (location.key === 'default' && location.pathname === '/') {
       navigate(pathNavigate);
     }
-  }, [dataSorted, location.key, navigate, pathNavigate]);
+  }, [dataSorted, location.key, location.pathname, navigate, pathNavigate]);
 
   return (
     <div
