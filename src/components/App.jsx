@@ -33,7 +33,7 @@ export const App = () => {
       }}
     >
       <Routes>
-        <Route path="/test-task" element={<Layout />}>
+        <Route path="/test-task/" element={<Layout />}>
           <Route
             index
             element={<Home data={dataSorted} location={location} />}

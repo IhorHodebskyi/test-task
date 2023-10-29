@@ -8,7 +8,6 @@ const DummyTable = () => {
 
   useEffect(() => {
     const result = tabs.find(e => e.id === id)?.title.split(' ');
-    console.log(result);
     setData(result);
   }, [id]);
 
