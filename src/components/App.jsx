@@ -13,7 +13,7 @@ export const App = () => {
   }, []);
 
   const pathNavigate = dataSorted?.[0].id;
-  console.log(location);
+
   useEffect(() => {
     if (location.key === 'default' && location.pathname === '/') {
       navigate(pathNavigate);

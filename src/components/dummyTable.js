@@ -7,7 +7,9 @@ const DummyTable = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    setData(tabs.find(e => e.id === id).title.split(' '));
+    const result = tabs.find(e => e.id === id)?.title.split(' ');
+    console.log(result);
+    setData(result);
   }, [id]);
 
   return (
