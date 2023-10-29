@@ -15,7 +15,7 @@ export const App = () => {
   const pathNavigate = dataSorted?.[0].id;
 
   useEffect(() => {
-    if (location.key === 'default' && location.pathname === '/') {
+    if (location.key === 'default' && location.pathname === '/test-task/') {
       navigate(pathNavigate);
     }
   }, [dataSorted, location.key, location.pathname, navigate, pathNavigate]);
@@ -33,7 +33,7 @@ export const App = () => {
       }}
     >
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/test-task" element={<Layout />}>
           <Route
             index
             element={<Home data={dataSorted} location={location} />}
