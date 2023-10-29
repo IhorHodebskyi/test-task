@@ -19,7 +19,7 @@ export const App = () => {
       navigate(pathNavigate);
     }
   }, [dataSorted, location.key, location.pathname, navigate, pathNavigate]);
-
+  console.log(location);
   return (
     <div
       style={{
