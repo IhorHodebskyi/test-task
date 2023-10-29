@@ -7,14 +7,18 @@ const DummyTable = lazy(() => import('./dummyTable'));
 export const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [data, setData] = useState(tabsData);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    setData(tabsData);
+  }, []);
 
   const dataSorted = useMemo(() => {
-    return data.toSorted((a, b) => a.order - b.order);
+    return data?.toSorted((a, b) => a.order - b.order);
   }, [data]);
 
   const pathNavigate = dataSorted?.[0].id;
-
+  console.log(dataSorted);
   useEffect(() => {
     if (location.key === 'default') {
       navigate(pathNavigate);
@@ -35,7 +39,10 @@ export const App = () => {
     >
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home data={data} location={location} />} />
+          <Route
+            index
+            element={<Home data={dataSorted} location={location} />}
+          />
           <Route path=":id" element={<DummyTable />} />
         </Route>
         <Route path="*" element={<div>Error page</div>} />
